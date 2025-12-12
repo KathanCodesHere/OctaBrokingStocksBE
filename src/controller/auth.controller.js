@@ -85,7 +85,7 @@ export const approvePendingUser = async (req, res) => {
             return sendError(res, 404, 'User not found');
         }
 
-        const uniqueId = `octa${(Math.floor(Math.random() * 1000) + 1000).toString().substr(1)}`;
+        const uniqueId = `oct-${(Math.floor(Math.random() * 10000000) + 10000000).toString().substr(1)}`;
 
         // Model call karo with ALL parameters
         const updateResult = await approveUserModel(email, uniqueId, adminId);

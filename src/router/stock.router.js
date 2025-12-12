@@ -13,7 +13,7 @@ import { adminOnly } from "../middleware/adminRole.middleware.js";
 const router = express.Router();
 
 // CRUD Routes
-router.post("/create",adminOnly, verifyToken, addStock);           // Create
+router.post("/create", verifyToken,adminOnly, addStock);           // Create
 router.get("/get", verifyToken, getMyStocks);         // Read all
 router.get("/get:id",adminOnly , verifyToken, getStockById);     // Read single
 router.put("/put:id",adminOnly , verifyToken, updateStock);      // Update

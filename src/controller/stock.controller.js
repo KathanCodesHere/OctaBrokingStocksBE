@@ -8,7 +8,6 @@ export const addStock = async (req, res) => {
     const userId = req.user.id;
     const {
       stock_name,
-      stock_symbol,
       stock_buy_price,
       current_price,
       quantity,
@@ -25,13 +24,12 @@ export const addStock = async (req, res) => {
 
     const [result] = await pool.execute(
       `INSERT INTO stocks 
-       (user_id, stock_name, stock_symbol, stock_buy_price, 
+       (user_id, stock_name, stock_buy_price, 
         current_price, quantity, purchase_date) 
-       VALUES (?, ?, ?, ?, ?, ?, ?)`,
+       VALUES (?, ?, ?, ?, ?, ?)`,
       [
         userId,
         stock_name,
-        stock_symbol || null,
         parseFloat(stock_buy_price),
         parseFloat(current_price || stock_buy_price),
         parseInt(quantity),

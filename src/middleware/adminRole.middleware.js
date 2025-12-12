@@ -2,7 +2,6 @@
 export const adminOnly = (req, res, next) => {
     try {
         const userType = req.user.userType;
-        
         if (userType !== 'admin') {
             return res.status(403).json({
                 success: false,
